@@ -1,0 +1,50 @@
+---
+const groups = [
+  {
+    title: 'Security',
+    items: ['VAPT', 'Android App Testing', 'Thick-Client Testing', 'Network Testing', 'Technical Exploitation'],
+  },
+  {
+    title: 'Process & Delivery',
+    items: ['Business Test-Cases', 'Risk Mitigation', 'Compliance', 'Threat Simulation'],
+  },
+  {
+    title: 'Engineering',
+    items: ['AI Automation', 'Security Workflow Automation', 'Java (Basics)', 'Tooling & Scripting'],
+  },
+];
+---
+
+<section id="skills" class="section reveal">
+  <div class="container">
+    <h2 class="section-title">Skills & <span class="gradient-text">toolkit</span></h2>
+    <p class="section-sub">What I bring to a security engagement.</p>
+    <div class="grid">
+      {groups.map((g) => (
+        <div class="card reveal">
+          <h3 class="group-title">{g.title}</h3>
+          <div>
+            {g.items.map((i) => <span class="pill">{i}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+  }
+  .group-title {
+    margin: 0 0 14px;
+    font-size: 1.15rem;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+</style>

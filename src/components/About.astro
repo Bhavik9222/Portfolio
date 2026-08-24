@@ -1,0 +1,64 @@
+---
+const points = [
+  'Vulnerability Assessment & Penetration Testing (VAPT)',
+  'Android application security testing',
+  'Thick-client application risk assessment',
+  'Network & infrastructure security testing',
+  'Advanced exploitation & threat simulation',
+  'AI-driven vulnerability detection & remediation',
+];
+---
+
+<section id="about" class="section reveal">
+  <div class="container">
+    <h2 class="section-title">About <span class="gradient-text">me</span></h2>
+    <p class="section-sub">Computer Science & Engineering background, security by trade.</p>
+    <div class="about-grid">
+      <div class="card about-bio">
+        <p>
+          Working with Offensive security. Highly skilled Security Analyst with 1.5+ years of
+          experience in cybersecurity and a solid academic foundation in Computer Science &
+          Engineering. I specialize in VAPT methodologies and secure mobile, thick-client, and
+          network environments for organizations.
+        </p>
+        <p>
+          I combine engineering principles with advanced exploitation skills to simulate
+          sophisticated attacks and defend against them — and I leverage AI automation to
+          streamline detection and remediation workflows. Currently driving security excellence
+          at <strong>Net Square Solutions Pvt. Ltd.</strong>
+        </p>
+      </div>
+      <ul class="about-list">
+        {points.map((p) => (
+          <li><span class="dot" />{p}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+  }
+  .about-bio p { color: var(--muted); margin: 0 0 16px; }
+  .about-list { list-style: none; padding: 0; margin: 0; }
+  .about-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text);
+  }
+  .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--grad);
+    flex: none;
+  }
+  @media (max-width: 760px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+</style>

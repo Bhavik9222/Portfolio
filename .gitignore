@@ -1,0 +1,7 @@
+# Build output
+dist/
+node_modules/
+.node_modules/
+.astro/
+*.log
+.DS_Store

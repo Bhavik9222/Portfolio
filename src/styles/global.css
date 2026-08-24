@@ -1,0 +1,213 @@
+/* =============================================================================
+   Bhavik Merja — Portfolio · Advanced "Aurora" palette
+   ============================================================================= */
+:root {
+  /* Deep, rich canvas */
+  --bg: #07070f;
+  --bg-soft: #12121f;
+  --bg-soft-2: #171726;
+
+  /* Type */
+  --text: #f6f5ff;
+  --muted: #b4b3cc;
+
+  /* Advanced accent palette — "Electric Aurora" */
+  --c1: #22d3ee;   /* cyan        */
+  --c2: #7c3aed;   /* violet      */
+  --c3: #ec4899;   /* pink        */
+  --c4: #f5ae28;   /* amber       */
+
+  /* Multi-stop gradient used across brand, buttons & glows */
+  --grad: linear-gradient(120deg, var(--c1), var(--c2) 45%, var(--c3) 78%, var(--c4));
+  --grad-soft: linear-gradient(120deg, rgba(34,211,238,.18), rgba(124,58,237,.18) 45%, rgba(236,72,153,.18));
+
+  --radius: 20px;
+  --maxw: 1120px;
+
+  --glow-1: rgba(34,211,238,.45);
+  --glow-2: rgba(124,58,237,.5);
+  --glow-3: rgba(236,72,153,.45);
+
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+/* ---- Background atmosphere: slow-moving aurora orbs ------------------------ */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  filter: blur(120px);
+  opacity: .55;
+  border-radius: 50%;
+  pointer-events: none;
+}
+body::before {
+  width: 620px; height: 620px;
+  background: radial-gradient(circle at 30% 30%, var(--glow-2), transparent 70%);
+  top: -160px; left: -120px;
+  animation: float1 18s var(--ease) infinite alternate;
+}
+body::after {
+  width: 560px; height: 560px;
+  background: radial-gradient(circle at 70% 70%, var(--glow-3), transparent 70%);
+  bottom: -180px; right: -120px;
+  animation: float2 20s var(--ease) infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after { animation: none; }
+}
+
+@keyframes float1 { to { transform: translate(80px, 60px) scale(1.15); } }
+@keyframes float2 { to { transform: translate(-70px, -50px) scale(1.1); } }
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'JP Mono', sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  background:
+    radial-gradient(900px 500px at 10% -10%, rgba(34,211,238,.14), transparent 60%),
+    radial-gradient(800px 500px at 110% 10%, rgba(236,72,153,.14), transparent 55%),
+    var(--bg);
+}
+
+/* Subtle top vignette for depth */
+body::after-content { display: none; }
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---- Gradient text -------------------------------------------------------- */
+.gradient-text,
+.gradient-heading {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 180% 180%;
+  animation: shimmer 8s var(--ease) infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---- Buttons -------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  border: none;
+  cursor: pointer;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+}
+.btn-primary {
+  background: var(--grad);
+  background-size: 180% 180%;
+  color: #0a0a12;
+  box-shadow: 0 12px 34px var(--glow-2);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 44px var(--glow-3);
+}
+.btn-ghost {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.14);
+  color: var(--text);
+  backdrop-filter: blur(8px);
+}
+.btn-ghost:hover { transform: translateY(-3px); border-color: var(--c1); box-shadow: 0 10px 30px var(--glow-1); }
+
+/* ---- Sections ------------------------------------------------------------- */
+.section { padding: 96px 0; position: relative; }
+.section-title {
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  margin: 0 0 10px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+.section-sub { color: var(--muted); margin: 0 0 44px; font-size: 1.05rem; }
+
+/* ---- Glass cards ---------------------------------------------------------- */
+.card {
+  background: linear-gradient(180deg, var(--bg-soft-2), var(--bg-soft));
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--radius);
+  padding: 26px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--grad-soft);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, #000 0 0;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .3s var(--ease);
+}
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(124,58,237,.5);
+  box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 40px var(--glow-2);
+}
+.card:hover::before { opacity: 1; }
+
+/* ---- Pills ---------------------------------------------------------------- */
+.pill {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 600;
+  background: rgba(124,58,237,.16);
+  color: #d9ccff;
+  border: 1px solid rgba(124,58,237,.28);
+  margin: 0 8px 8px 0;
+}
+
+/* ---- Reveal-on-scroll animation ------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+}
+.reveal.in { opacity: 1; transform: none; }
+.card.reveal { transition-delay: 0ms; }
+.card.reveal:nth-child(2) { transition-delay: 90ms; }
+.card.reveal:nth-child(3) { transition-delay: 180ms; }
+.card.reveal:nth-child(4) { transition-delay: 270ms; }
+.card.reveal:nth-child(5) { transition-delay: 360ms; }
+.card.reveal:nth-child(6) { transition-delay: 450ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}

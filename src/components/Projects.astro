@@ -1,0 +1,60 @@
+---
+const projects = [
+  {
+    name: 'Adobe',
+    tag: 'Enterprise VAPT',
+    desc: 'Security assessment of large-scale enterprise applications, identifying and helping remediate critical vulnerabilities.',
+  },
+  {
+    name: 'Kotak Bank',
+    tag: 'Financial Security',
+    desc: 'Penetration testing for banking infrastructure and applications to protect sensitive financial data.',
+  },
+  {
+    name: 'iBaset',
+    tag: 'Thick-Client Testing',
+    desc: 'Risk assessment of complex thick-client applications and backend integrations.',
+  },
+  {
+    name: 'GI Council (Govt.)',
+    tag: 'Government Project',
+    desc: 'Security testing for government infrastructure, ensuring compliance and resilience.',
+  },
+  {
+    name: 'Android App Engagements',
+    tag: 'Mobile Security',
+    desc: 'Comprehensive security testing of Android applications across multiple clients.',
+  },
+  {
+    name: 'Network & Automation',
+    tag: 'AI-Driven',
+    desc: 'Robust network testing combined with AI automation to accelerate detection and remediation.',
+  },
+];
+---
+
+<section id="projects" class="section reveal">
+  <div class="container">
+    <h2 class="section-title">Client <span class="gradient-text">engagements</span></h2>
+    <p class="section-sub">Selected organizations I've helped secure.</p>
+    <div class="grid">
+      {projects.map((p) => (
+        <article class="card reveal">
+          <span class="pill">{p.tag}</span>
+          <h3>{p.name}</h3>
+          <p>{p.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .card h3 { margin: 10px 0 8px; font-size: 1.25rem; }
+  .card p { color: var(--muted); margin: 0; font-size: 0.95rem; }
+</style>
